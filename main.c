@@ -116,6 +116,11 @@ void process_app(TOBJ7000* OUT_GENERIC, TOBJ6000* IN_GENERIC)
  * <b>Details of function</b><br>
  * This routine is handling the SYNC0 Interrupts and need to call the SSC Stack
  */
+void ERU1_2_IRQHandler(void)
+{
+    SYNC0IRQHandler();  // Call the Sync0 handler
+}
+
 void SYNC0IRQHandler(void)
 {
     Sync0_Isr();
@@ -128,6 +133,12 @@ void SYNC0IRQHandler(void)
  * <b>Details of function</b><br>
  * This routine is handling the SYNC1 Interrupts and need to call the SSC Stack
  */
+ 
+void ERU1_0_IRQHandler(void)
+{
+	SYNC1IRQHandler();  // Call the Sync1 handler
+}
+
 void SYNC1IRQHandler(void)
 {
     Sync1_Isr();

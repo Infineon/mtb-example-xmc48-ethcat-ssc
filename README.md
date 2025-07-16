@@ -1,8 +1,9 @@
 # XMC4800 EtherCAT SSC
 
-This code example demonstrates the implementation of an EtherCAT slave node using the Beckhoff Slave Stack Code (SSC) Tool to generate the slave stack code for XMC4800 Relax EtherCAT Kit.
+This code example demonstrates the implementation of an EtherCAT slave node using the Beckhoff Slave Stack Code (SSC) Tool to generate the slave stack code for XMC4800 Relax EtherCAT Kit. For XMC4800 IoT FreeRTOS Connectivity WIFI kit, please refer to this [README](https://github.com/Infineon/mtb-example-xmc43-ethcat-ssc/blob/master/README.md) on GitHub.
 
-[View this README on GitHub.](https://github.com/Infineon/mtb-example-xmc48-ethcat-ssc)
+
+[View this README on GitHub.](https://github.com/Infineon/mtb-example-xmc48-ethcat-ssc/blob/master/README.md)
 
 [Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyNDE3MzQiLCJTcGVjIE51bWJlciI6IjAwMi00MTczNCIsIkRvYyBUaXRsZSI6IlhNQzQ4MDAgRXRoZXJDQVQgU1NDIiwicmlkIjoic2lsc3VlcHVlcmJlcmtheSIsIkRvYyB2ZXJzaW9uIjoiMS4wLjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
 
@@ -29,7 +30,7 @@ This code example demonstrates the implementation of an EtherCAT slave node usin
 
 ## Hardware setup
 
-Connect the Micro-USB cable to debug connector (X101) and a LAN cable from your master device to the IN port (X100) of the XMC4800 kit as shown in **Figure 1**. See the kit user guide to ensure that the board is configured correctly.
+Connect the Micro-USB cable to debug connector (X101) and a LAN cable from your master device to the IN port (X100) of the XMC4800 kit as shown in **Figure 1**. See the kit user guide to ensure that the board is configured correctly. 
 
 **Figure 1. Kit setup**
 
@@ -154,7 +155,7 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
    
    <img src="images/design.png" width="500" height="180">
 
-3. Start the SSC Tool and create a new project: **File** > **New**. Select **Custom** and click **Import**. Select the configuration xml file inside the example project (under **imports** > **mtb-xmc-ecat** > **ssc_config** folder) and import it. Select the Infineon device inside the dropdown list (Infineon XMC&trade; EtherCAT hardware) and click **OK**. Your project will be created
+3. Start the SSC Tool and create a new project: **File** > **New**. Select **Custom** and click **Import**. Select the configuration xml file inside the example project (under **imports** > **mtb-xmc-ecat** > **ssc_config** folder) and import it. Select the Infineon device inside the dropdown list (Infineon XMC&trade; EtherCAT hardware) and click **OK**. If a popped window appears and asks for "Add patch to project", select "No". Your project will be created
 
    **Figure 4. Project creation**
    
