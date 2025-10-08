@@ -13,7 +13,7 @@ This code example demonstrates the implementation of an EtherCAT slave node usin
 - Board support package (BSP) minimum required version: 1.0.0
 - [SEGGER J-Link software](https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack)
 - [SSC Tool v5.13](https://www.ethercat.org/en/downloads/downloads_01DCC32A10294F2EA866F7E46FB0285F.htm)
-- [TwinCAT 3](https://www.beckhoff.com/en-en/support/download-finder/search-result/?c-1=26782567)
+- [TwinCAT 3.1](https://www.beckhoff.com/en-en/support/download-finder/search-result/?c-1=26782567) (tested with v3.1.4024)
 - Programming language: C
 - Associated parts: [XMC4800 MCU](https://www.infineon.com/cms/en/product/microcontroller/32-bit-industrial-microcontroller-based-on-arm-cortex-m/32-bit-xmc4000-industrial-microcontroller-arm-cortex-m4/xmc4800)
 
@@ -42,6 +42,8 @@ Connect the Micro-USB cable to debug connector (X101) and a LAN cable from your 
 See the [ModusToolbox&trade; tools package installation guide](https://www.infineon.com/ModusToolboxInstallguide) for information about installing and configuring the tools package. Tools package v3.5 is needed to run this code example.
 
 This code example uses ModusToolbox&trade; Device Configurator's EtherCAT personality, which is pre-configured in the project. To check the details on how to use the EtherCAT personality for custom applications, see the "HW Configuration in Device Configurator" section of the [EtherCAT API reference manual](https://infineon.github.io/mtb-xmc-ecat/api_reference_manual/html/index.html#section_quick_start).
+
+For TwinCAT 3.1, please download the extended Automation Engineering (XAE) tool first, then also download TwinCAT 3.1 Package Manager from Beckhoff's [webpage](https://www.beckhoff.com/en-en/support/download-finder/search-result/?c-1=26782567).
 
 
 ## Using the code example
@@ -159,7 +161,7 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
 
    **Figure 4. Project creation**
    
-   <img src="images/inf.png" width="400" height="263">
+   <img src="images/importcn.jpg" width="800" height="326">
 
 4. Check the settings inside SlaveInformation: vendor ID, vendor name, product ID, and product code are customer-specific and are used by the host to identify the slave. Define the revision number, serial number, device name, and HW/SW version per the requirement. The vendor ID/name and product code assigned to Infineon can be used for the evaluation purpose only. For production, your own vendor ID/name assigned by the EtherCAT Technology Group is mandatory
 
@@ -167,17 +169,23 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
    
    <img src="images/ssc.png" width="500" height="318">
 
-5. Import the spreadsheet, which defines the interface of your EtherCAT node. In SSC Tool, go to **Tool** > **Application** > **Import** and select the spreadsheet file provided inside the example project
+5. In order to use the CE properly with XMC4300/4800 generated EtherCAT stack, please click to **Add File(s)** button to include the patch file in the stack. Select the patch file (already included in the project), then open it. Select OK if a window appears
 
-6. Click **Project** > **Create new Slave Files** to start file generation. Adapt the destination folder for the EtherCAT SSC and ESI files. For this example, the default settings are recommended, which directs the stack generation inside the *Src* folder under the *ssc_config* folder in the project
+   **Figure 6. Adding patch file**
+   
+   <img src="images/patchs.jpg" width="500" height="368">
 
-7. Check the availability of the generated SSC
+6. Import the spreadsheet, which defines the interface of your EtherCAT node. In SSC Tool, go to **Tool** > **Application** > **Import** and select the spreadsheet file provided inside the example project
+
+7. Click **Project** > **Create new Slave Files** to start file generation. Adapt the destination folder for the EtherCAT SSC and ESI files. For this example, the default settings are recommended, which directs the stack generation inside the *Src* folder under the *ssc_config* folder in the project
+
+8. Check the availability of the generated SSC
 
    **Figure 6. Generated SSC**
    
    <img src="images/src.png" width="300" height="526">
 
-8. Inside the *XMC_ESC.c* generated file, implement the link to your application as shown in the following. Modify the source code accordingly, which copies the application data to/from ESC memory to the local application memory:
+9. Inside the *XMC_ESC.c* generated file, implement the link to your application as shown in the following. Modify the source code accordingly, which copies the application data to/from ESC memory to the local application memory:
 
    **Before copying the data**
 
@@ -222,10 +230,14 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
    
    **Code**
    ```
-   process_app(&OUT_GENERIC0x7000, &IN_GENERIC0x6000); 
+   void process_app(TOBJ7000 *OUT_GENERIC, TOBJ6000 *IN_GENERIC);
+   void APPL_Application(void)
+   {
+      process_app(&OUT_GENERIC0x7000, &IN_GENERIC0x6000); 
+   }
    ```
 
-9. Copy the *XMC_ESC.xml* generated ESI file into the project (by default, generated under the *ssc_config* folder) into the TwinCAT EtherCAT folder (default path is *C:\TwinCAT\3.1\Config\Io\EtherCAT*). If any TwinCAT program is running, restart it
+10. Copy the *XMC_ESC.xml* generated ESI file into the project (by default, generated under the *ssc_config* folder) into the TwinCAT EtherCAT folder (default path is *C:\TwinCAT\3.1\Config\Io\EtherCAT*). If any TwinCAT program is running, restart it
 
    **Figure 7. Copy the ESI file**
    
@@ -360,6 +372,7 @@ Document title: *CE241734* – *XMC4800 EtherCAT SSC*
  Version | Description of change
  ------- | ---------------------
  1.0.0   | New code example
+ 1.1.0   | Patch file added
 <br>
 
 

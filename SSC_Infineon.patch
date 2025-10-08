@@ -1,0 +1,33 @@
+--- ecatslv.c
++++ ecatslv.c
+@@ -1995,30 +1995,3 @@
+-/*ECATCHANGE_START(V5.13) ECAT1*/
+-    /*Get Sync mapped to AL Event indication*/
+-    {
+ #if ESC_32BIT_ACCESS || ESC_16BIT_ACCESS
+-        UINT32 u32TmpVar = 0;
+-        HW_EscReadDWord(u32TmpVar, ESC_PDI_CONFIGURATION);
+-        if ((u32TmpVar & ESC_SYNC0_MAPPED_TO_ALEVENT) > 0)
+-        {
+-            u16ALEventMask |= SYNC0_EVENT;
+-        }
+-
+-        if ((u32TmpVar & ESC_SYNC1_MAPPED_TO_ALEVENT) > 0)
+-        {
+-            u16ALEventMask |= SYNC1_EVENT;
+-        }
+ #else
+-        UINT8 u8TmpVar = 0;
+-        HW_EscReadByte(u8TmpVar, ESC_PDI_CONFIGURATION);
+-        if ((u8TmpVar & ESC_SYNC0_MAPPED_TO_ALEVENT) > 0)
+-        {
+-            u16ALEventMask |= SYNC0_EVENT;
+-        }
+-
+-        if ((u8TmpVar & ESC_SYNC1_MAPPED_TO_ALEVENT) > 0)
+-        {
+-            u16ALEventMask |= SYNC1_EVENT;
+-        }
+ #endif
+-    }
+-/*ECATCHANGE_END(V5.13) ECAT1*/
