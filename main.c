@@ -136,7 +136,7 @@ void SYNC0IRQHandler(void)
  
 void ERU1_0_IRQHandler(void)
 {
-	SYNC1IRQHandler();  // Call the Sync1 handler
+    SYNC1IRQHandler();  // Call the Sync1 handler
 }
 
 void SYNC1IRQHandler(void)

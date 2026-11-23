@@ -86,10 +86,10 @@ The 'project-creator-cli' tool can be used to create applications from a CLI ter
 
 Use a CLI terminal to invoke the 'project-creator-cli' tool. On Windows, use the command-line 'modus-shell' program provided in the ModusToolbox&trade; installation instead of a standard Windows command-line application. This shell provides access to all ModusToolbox&trade; tools. You can access it by typing "modus-shell" in the search box in the Windows menu. In Linux and macOS, you can use any terminal application.
 
-The following example clones the "[XMC4800 EtherCAT SSC](https://github.com/Infineon/mtb-example-xmc48-ethcat-ssc)" application with the desired name "Xmc4800EtherCatSSC" configured for the *KIT_XMC48_RLX_ECAT_V2.1* BSP into the specified working directory, *C:/mtb_projects*:
+The following example clones the "[XMC4800 EtherCAT SSC](https://github.com/Infineon/mtb-example-xmc48-ethcat-ssc)" application with the desired name "XMC4800EtherCATSSC" configured for the *KIT_XMC48_RLX_ECAT_V1* BSP into the specified working directory, *C:/mtb_projects*:
 
    ```
-   project-creator-cli --board-id KIT_XMC48_RLX_ECAT_V2.1 --app-id mtb-example-xmc48-ethcat-ssc --user-app-name Xmc4800EtherCatSSC --target-dir "C:/mtb_projects"
+   project-creator-cli --board-id KIT_XMC48_RLX_ECAT_V1 --app-id mtb-example-xmc48-ethcat-ssc --user-app-name XMC4800EtherCATSSC --target-dir "C:/mtb_projects"
    ```
 
 The 'project-creator-cli' tool has the following arguments:
@@ -373,6 +373,7 @@ Document title: *CE241734* – *XMC4800 EtherCAT SSC*
  ------- | ---------------------
  1.0.0   | New code example
  1.1.0   | Patch file added
+ 1.2.0   | Custom linker added for emulated EEPROM
 <br>
 
 

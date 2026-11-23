@@ -127,7 +127,7 @@ LDFLAGS=
 LDLIBS=
 
 # Path to the linker script to use (if empty, use the default linker script).
-LINKER_SCRIPT=
+LINKER_SCRIPT=linker_cust.ld
 
 # Custom pre-build commands to run.
 PREBUILD=
